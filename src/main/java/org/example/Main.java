@@ -9,9 +9,9 @@ public class Main {
     public static void main(String[] args) {
         for (int i = 0; i < 1000; i++) {
             new Thread(() -> {
+                String way = generateRoute("RLRFR", 100);
+                int cnt = getCountLetter(way);
                 synchronized (sizeToFreq) {
-                    String way = generateRoute("RLRFR", 100);
-                    int cnt = getCountLetter(way);
                     sizeToFreq.merge(cnt, 1, Integer::sum);
                 }
             }).start();
